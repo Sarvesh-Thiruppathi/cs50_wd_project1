@@ -1,4 +1,5 @@
 import re
+import random
 
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -35,3 +36,6 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+    
+def get_random_entry():
+    return list_entries()[random.randint(0, len(list_entries()) - 1)]

@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+
 import markdown2
 
 from . import util
@@ -18,3 +20,6 @@ def page(request, title):
         "title": title,
         "content": markdown2.markdown(util.get_entry(title))
     })
+
+def random(request):
+    return redirect("/" + util.get_random_entry())
